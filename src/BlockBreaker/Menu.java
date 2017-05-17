@@ -16,13 +16,14 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.Timer;
 
 public class Menu extends JPanel {
-	String error = "error";
+	String error = "";
 	String gamerTag = "";
 	Font f = new Font("serif", Font.BOLD, 25);
 	JLabel errorMessage;
@@ -74,14 +75,17 @@ public class Menu extends JPanel {
 		confirmButton.addActionListener(new ActionListener()
 		{
 			  public void actionPerformed(ActionEvent e)
-			  {
+			  {  
 				  gamerTag = textbox.getText();
-				  if (gamerTag.length() < 8) {
-					  error = "Gamer tag must be atleaste 8 characters";
+				  if (gamerTag.length() < 6 || gamerTag.length() > 10) {
+					  error = "Gamer tag must be between 6-10 characters";
 						errorMessage.setText(error); 
 					}
-				  else
-					  submit = true;
+				  else {
+					     submit = true;
+					     confirmButton.getModel().setPressed(true);
+				  }
+				   
 			  }
 			});
 

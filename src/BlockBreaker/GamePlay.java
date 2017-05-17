@@ -32,6 +32,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 	private int ballYdir = -2;
 	
 	public boolean win = false;
+	public String gamerTag = "";
 	
 	public int[] getBallPos(){
 		return new int[]{ballPosX,ballPosY};
@@ -85,7 +86,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		//score
 		g.setColor(Color.white);
 		g.setFont(new Font("serif", Font.BOLD, 25));
-		g.drawString(""+score, 590, 30);
+		g.drawString(gamerTag+"'s score:"+score, 10, 30);
 		
 		
 		//paddle
