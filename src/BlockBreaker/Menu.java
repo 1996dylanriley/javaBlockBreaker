@@ -28,15 +28,16 @@ public class Menu extends JPanel {
 	Font f = new Font("serif", Font.BOLD, 25);
 	JLabel errorMessage;
 	JTextField textbox;
+	JLabel help = new JLabel("Controls: Use left and right arrows to move paddle.");
 	JButton confirmButton;
 	boolean submit = false;
 
 	public Menu() {
+		//instantiating the fields and setting layout
+		
 		Container contentPane = this;
-
 		SpringLayout layout = new SpringLayout();
 		contentPane.setLayout(layout);
-		
 		errorMessage = new JLabel(error);
 		errorMessage.setFont(f);
 		Component label = new JLabel("Enter GamerTag");
@@ -46,13 +47,15 @@ public class Menu extends JPanel {
 		confirmButton = new JButton("Confirm");
 		confirmButton.setPreferredSize(new Dimension(80, 36));
 		
-		
+		//This adds the form elements to the pane
 		contentPane.add(errorMessage);
 		contentPane.add(label);
 		contentPane.add(textbox);
 		contentPane.add(confirmButton);
+		contentPane.add(help);
 		
 		
+		//This sets the position of the form elements
 		layout.putConstraint(SpringLayout.WEST, errorMessage, 150, SpringLayout.WEST,
 				contentPane);
 		layout.putConstraint(SpringLayout.NORTH, errorMessage, 250, SpringLayout.NORTH,
@@ -69,9 +72,13 @@ public class Menu extends JPanel {
 				contentPane);
 		layout.putConstraint(SpringLayout.NORTH, confirmButton, 200, SpringLayout.NORTH,
 				contentPane);
+		layout.putConstraint(SpringLayout.WEST, help, 5, SpringLayout.WEST,
+				contentPane);
+		layout.putConstraint(SpringLayout.NORTH, help, 5, SpringLayout.NORTH,
+				contentPane);
 
 		
-		
+		//Event listener for the submit button which handles form validation
 		confirmButton.addActionListener(new ActionListener()
 		{
 			  public void actionPerformed(ActionEvent e)

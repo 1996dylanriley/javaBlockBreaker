@@ -17,21 +17,23 @@ import javax.swing.SpringLayout;
 public class Main {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-
+    	//sets up application window.
         JFrame frame;
         String gamerTag = "";
         frame = new JFrame("BlockBreaker");
-
+        
+        //creates instance of game
         Menu menu = new Menu();
         GamePlay gamePlay = new GamePlay();
-
+        
+        //sets up the window containers with chosen layout
         JPanel containerPanel = new JPanel();
-        CardLayout cl = new CardLayout();
+        CardLayout layout = new CardLayout();
 
-        containerPanel.setLayout(cl);
+        containerPanel.setLayout(layout);
         containerPanel.add(menu, "1");
         containerPanel.add(gamePlay, "2");
-        cl.show(containerPanel, "1");
+        layout.show(containerPanel, "1");
 
         frame.setBounds(10,10,700,600);
         frame.setResizable(false);
@@ -39,15 +41,16 @@ public class Main {
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.add(containerPanel);
         
+        //This infinate loop ensures that the menu is always open when the form hasn't been validated
         while(true){
         	gamerTag = menu.getGamerTag();
         	if(!menu.formSubmitted()){
-        		cl.show(containerPanel, "1");
+        		layout.show(containerPanel, "1");
         	}
         	
         	else{
         		gamePlay.gamerTag = gamerTag;
-    	        cl.show(containerPanel, "2");
+    	        layout.show(containerPanel, "2");
     	        gamePlay.requestFocus();
         	}
         	

@@ -68,7 +68,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		timer = new Timer(delay,this);
 		timer.start();
 	}
-	
+	//Paints the elements to the screen
 	public void paint(Graphics g){
 		//Background
 		g.setColor(Color.black);
@@ -97,6 +97,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		g.setColor(Color.yellow);
 		g.fillOval(ballPosX, ballPosY, 20, 20);
 		
+		//shows game over is condition is met
 		if(isGameOver()){
 			play = false;
 			ballXdir = 0;
@@ -113,7 +114,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		
 		g.dispose();
 	}
-	
+	//method added to improve readability
 	public boolean isGameOver(){
 		if(totalBricks == 0){
 			win = true;
@@ -126,6 +127,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		return false;
 	}
 	
+	//this is the implimentation of the actionListener interface
 	public void actionPerformed(ActionEvent arg0) {
 		
 		timer.start();
@@ -155,7 +157,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 			ballXdir = -ballXdir;
 		}
 	}
-	
+	//this loops through the map(array) and checks for collisions
 	public void checkForBrickCollision(){
 		A:for(int i = 0; i < map.map.length; i++){
 			for(int j = 0; j < map.map[0].length; j++){
@@ -186,6 +188,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		}
 	}
 	
+	//keyhandler event
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
@@ -229,11 +232,12 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 		playerX -= 20;
 	}
 
+	//Methods needed for interface implimentation
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	//Methods needed for interface implimentation
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
